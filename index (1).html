@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>विवाह निमंत्रण</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: Georgia, serif;
+}
+
+body{
+  background:#000;
+  overflow:hidden;
+}
+
+/* ---------- Page Common ---------- */
+.page{
+  width:100%;
+  height:100vh;
+  position:absolute;
+  top:0;
+  left:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  backface-visibility:hidden;
+  transition:1.2s;
+}
+
+/* ---------- First Page ---------- */
+#page1{
+  background:linear-gradient(135deg,#2c003e,#000);
+  color:#f5d76e;
+  cursor:pointer;
+  transform-origin:left;
+}
+
+.card{
+  border:3px solid gold;
+  padding:30px;
+  width:90%;
+  max-width:400px;
+  text-align:center;
+  background:rgba(0,0,0,0.6);
+}
+
+.card h1{
+  font-size:28px;
+  margin-bottom:20px;
+}
+
+.names{
+  font-size:26px;
+  margin:15px 0;
+}
+
+.big-heart{
+  font-size:32px;
+  color:red;
+}
+
+.tap{
+  margin-top:20px;
+  font-size:14px;
+  opacity:0.8;
+}
+
+/* ---------- Second Page ---------- */
+#page2{
+  background:linear-gradient(135deg,#4b0000,#120000);
+  color:#fff;
+  transform:rotateY(90deg);
+  transform-origin:right;
+}
+
+.details{
+  border:3px solid gold;
+  padding:25px;
+  width:90%;
+  max-width:400px;
+  background:rgba(0,0,0,0.6);
+  text-align:center;
+}
+
+.details h2{
+  color:#f5d76e;
+  margin-bottom:15px;
+}
+
+.details p{
+  font-size:18px;
+  margin:12px 0;
+}
+
+.footer{
+  margin-top:15px;
+  font-size:14px;
+  color:#ddd;
+}
+
+/* ---------- Floating Hearts ---------- */
+.heart{
+  position:absolute;
+  bottom:-20px;
+  animation:float 6s linear infinite;
+  color:red;
+}
+
+@keyframes float{
+  0%{transform:translateY(0);opacity:1;}
+  100%{transform:translateY(-800px);opacity:0;}
+}
+
+/* ---------- WhatsApp Button ---------- */
+.whatsapp{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#25D366;
+  color:#fff;
+  padding:12px 18px;
+  border-radius:50px;
+  text-decoration:none;
+  font-size:14px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🎵 Background Music -->
+<audio id="bgMusic" loop>
+  <!-- 👉 अगर अपना song लगाना हो तो wedding.mp3 रख दें -->
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
+
+<!-- First Page -->
+<div class="page" id="page1" onclick="openCard()">
+  <div class="card">
+    <h1>💐 विवाह निमंत्रण 💐</h1>
+    <div class="names">शिव रंजन</div>
+    <div class="big-heart">❤️</div>
+    <div class="names">अंजली</div>
+    <div class="tap">👉 आगे बढ़ने के लिए टैप करें</div>
+  </div>
+</div>
+
+<!-- Second Page -->
+<div class="page" id="page2">
+  <div class="details">
+    <h2>शुभ विवाह कार्यक्रम</h2>
+
+    <p>🌼 शुभ तिलक<br>21 फरवरी 2026</p>
+    <p>🌸 शुभ हल्दी<br>24 फरवरी 2026</p>
+    <p>💍 शुभ विवाह<br>25 फरवरी 2026</p>
+
+    <div class="footer">
+      आपकी गरिमामयी उपस्थिति<br>
+      हमारे लिए सौभाग्य की बात होगी 🙏
+    </div>
+  </div>
+</div>
+
+<!-- WhatsApp Share -->
+<a class="whatsapp"
+href="https://wa.me/?text=💐%20शिव%20रंजन%20❤️%20अंजली%20के%20विवाह%20में%20आपको%20सादर%20आमंत्रण%20है"
+target="_blank">
+WhatsApp Share
+</a>
+
+<script>
+function openCard(){
+  document.getElementById("bgMusic").play();   // music start
+  document.getElementById("page1").style.transform="rotateY(-90deg)";
+  document.getElementById("page2").style.transform="rotateY(0deg)";
+}
+
+/* Floating Hearts */
+setInterval(()=>{
+  let h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="❤️";
+  h.style.left=Math.random()*100+"%";
+  h.style.fontSize=(20+Math.random()*20)+"px";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),6000);
+},500);
+</script>
+
+</body>
+</html>
